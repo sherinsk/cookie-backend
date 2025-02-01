@@ -41,7 +41,7 @@ app.post('/signin', (req, res) => {
     // Set cookie
     res.cookie('token', token, {
         httpOnly: true,   // Prevents JavaScript access (XSS protection)
-        secure: true, // Use secure cookies in production
+        secure: false, // Use secure cookies in production
         sameSite: 'None' // Prevents CSRF attacks
     });
 
