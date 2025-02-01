@@ -42,7 +42,8 @@ app.post('/signin', (req, res) => {
     res.cookie('token', token, {
         httpOnly: true,   // Prevents JavaScript access (XSS protection)
         secure: true, // Use secure cookies in production
-        sameSite: 'None' // Prevents CSRF attacks
+        sameSite: 'None', // Prevents CSRF attacks
+        domain: '.vercel.app'
     });
 
     res.json({ message: 'Signed in successfully' });
