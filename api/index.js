@@ -9,7 +9,7 @@ const app = express();
 // CORS Configuration
 app.use(
     cors({
-        origin: "https://cookie-frontend-delta.vercel.app", // Allow frontend access
+        origin: "http://localhost:5173", // Allow frontend access
         credentials: true, // Allow cookies to be sent
     })
 );
@@ -40,12 +40,10 @@ app.post('/signin', (req, res) => {
 
     // Set cookie
     res.cookie('token', token, {
-        httpOnly: true,    // Prevents JavaScript access (XSS protection)
-        secure: true, // Secure cookies in production (only set in HTTPS)
-        sameSite: 'None',  // Allows cross-origin cookie sending
-        maxAge: 3600000,    // Set cookie expiry (optional)
-      });
-    
+        httpOnly: true,   // Prevents JavaScript access (XSS protection)
+        secure: true, // Use secure cookies in production
+        sameSite: 'None' // Prevents CSRF attacks
+    });
 
     res.json({ message: 'Signed in successfully' });
 });
