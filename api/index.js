@@ -9,7 +9,10 @@ const app = express();
 // CORS Configuration
 app.use(
     cors({
-        origin: "http://localhost:5173", // Allow frontend access
+        origin: [
+            "http://localhost:5173", // Allow local frontend access
+            "https://cookie-frontend-delta.vercel.app"
+        ],
         credentials: true, // Allow cookies to be sent
     })
 );
