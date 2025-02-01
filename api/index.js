@@ -41,7 +41,7 @@ app.post('/signin', (req, res) => {
     // Set cookie
     res.cookie('token', token, {
         httpOnly: true,    // Prevents JavaScript access (XSS protection)
-        secure: true, // Secure cookies in production (only set in HTTPS)
+        secure: false, // Secure cookies in production (only set in HTTPS)
         sameSite: 'None',  // Allows cross-origin cookie sending
         maxAge: 3600000,    // Set cookie expiry (optional)
       });
