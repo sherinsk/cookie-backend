@@ -39,11 +39,10 @@ app.post('/signin', (req, res) => {
     });
 
     // Set cookie
-    res.cookie('token', token, {
-        httpOnly: true,   // Prevents JavaScript access (XSS protection)
-        secure: true, // Use secure cookies in production
-        sameSite: 'Strict' // Prevents CSRF attacks
-    });
+    // Manually setting the cookie using Set-Cookie header
+    res.setHeader('Set-Cookie', `token=${token}; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=3600`);
+
+
 
     res.json({ message: 'Signed in successfully' });
 });
