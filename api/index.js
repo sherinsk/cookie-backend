@@ -51,7 +51,7 @@ app.post('/signin', (req, res) => {
 // Middleware to Protect Routes
 const verifyToken = (req, res, next) => {
     const token = req.cookies.token;
-    console.log("HI")
+    console.log(token)
     if (!token) {
         return res.status(403).json({ message: 'Access denied. No token provided.' });
     }
